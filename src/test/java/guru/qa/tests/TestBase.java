@@ -1,7 +1,11 @@
 package guru.qa.tests;
 
 import com.codeborne.selenide.Configuration;
+import com.codeborne.selenide.Selenide;
+import com.codeborne.selenide.logevents.SelenideLogger;
 import guru.qa.drivers.BrowserstackDriver;
+import guru.qa.helpers.Attach;
+import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
@@ -18,11 +22,16 @@ public class TestBase {
 
     @BeforeEach
     void beforeEach() {
+        SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
         open();
     }
 
     @AfterEach
     void afterEach() {
+        String sessionId = Selenide.sessionId().toString();
+        Attach.screenshotAs("Last screenshot");
+        Attach.pageSource();
         closeWebDriver();
+        Attach.addVideo(sessionId);
     }
 }

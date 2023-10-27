@@ -4,7 +4,6 @@ import io.appium.java_client.AppiumBy;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
-import org.openqa.selenium.By;
 
 import static com.codeborne.selenide.CollectionCondition.sizeGreaterThan;
 import static com.codeborne.selenide.Condition.visible;
@@ -14,7 +13,7 @@ import static io.appium.java_client.AppiumBy.accessibilityId;
 import static io.qameta.allure.Allure.step;
 import static org.openqa.selenium.By.id;
 
-public class AndroidSearchWikiTests extends TestBase {
+public class AndroidSearchTests extends TestBase {
     @Test
     @Tag("android")
     @DisplayName("Checking search in Wikipedia")
@@ -33,7 +32,7 @@ public class AndroidSearchWikiTests extends TestBase {
                         .shouldHave(sizeGreaterThan(0)));
 
         step("Open item from a search result", () ->
-                $$(By.id("org.wikipedia.alpha:id/page_list_item_container")).first().click());
+                $$(AppiumBy.id("org.wikipedia.alpha:id/page_list_item_container")).first().click());
 
         step("Checking for error in text", () -> {
             $(id("org.wikipedia.alpha:id/view_wiki_error_text")).shouldBe(visible);

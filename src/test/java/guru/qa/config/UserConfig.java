@@ -8,10 +8,10 @@ import org.aeonbits.owner.Config;
 
 public interface UserConfig extends Config {
     @Key("username")
-    String getUser();
+    String getUsername();
 
-    @Key("userKey")
-    String getKey();
+    @Key("userPassword")
+    String getPassword();
 
     @Key("remoteUrl")
     String getRemoteUrl();

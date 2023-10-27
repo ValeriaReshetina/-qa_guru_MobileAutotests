@@ -11,10 +11,10 @@ public interface MobileConfig extends Config {
     String getApp();
 
     @Key("device")
-    @DefaultValue("Samsung Galaxy S22 Ultra")
+    @DefaultValue("Google Pixel 3")
     String getDevice();
 
     @Key("os_version")
-    @DefaultValue("12.0")
+    @DefaultValue("9.0")
     String getVersion();
 }

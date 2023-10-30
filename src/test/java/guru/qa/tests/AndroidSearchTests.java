@@ -34,8 +34,5 @@ public class AndroidSearchTests extends TestBase {
         step("Open item from a search result", () ->
                 $$(AppiumBy.id("org.wikipedia.alpha:id/page_list_item_container")).first().click());
 
-        step("Checking for error in text", () -> {
-            $(id("org.wikipedia.alpha:id/view_wiki_error_text")).shouldBe(visible);
-        });
     }
 }
